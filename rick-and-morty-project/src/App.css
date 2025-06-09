@@ -1,7 +1,7 @@
 table {
   width: 100%;
-  border-collapse: collapse;
   margin-top: 1rem;
+  border-collapse: collapse;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -42,4 +42,13 @@ button:hover:not(:disabled) {
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+body {
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+select, input {
+  font-size: 1rem;
 }

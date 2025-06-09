@@ -85,11 +85,36 @@ function App() {
   );
 
   return (
-    <div style={{ padding: '2rem', fontFamily: 'Arial' }}>
-      <h1>Rick and Morty Karakterleri</h1>
+    
+  <div style={{
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: '#f4f4f4',
+     fontFamily: 'Arial, sans-serif',
+     padding: '2rem',
+     boxSizing: 'border-box',
+     overflowX: 'hidden'
+  }}>
 
-      {/* Çoklu Filtre Alanı */}
-      <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', marginBottom: '1rem' }}>
+    <div style={{
+      backgroundColor: '#fff',
+      padding: '2rem',
+      borderRadius: '12px',
+      boxShadow: '0 8px 16px rgba(0,0,0,0.1)',
+      width: '95%',
+      maxHeight: '90vh',
+      overflowY: 'auto'
+    }}>
+      <h1 style={{ textAlign: 'center', color: '#333' }}>Rick and Morty Karakterleri</h1>
+
+      {/* Filtre Alanı */}
+      <div style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '1rem',
+        justifyContent: 'center',
+        marginBottom: '1rem'
+      }}>
         <input
           type="text"
           placeholder="İsme göre filtrele"
@@ -98,6 +123,7 @@ function App() {
             setFilters({ ...filters, name: e.target.value });
             setPage(1);
           }}
+          style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
         />
         <select
           value={filters.status}
@@ -105,6 +131,7 @@ function App() {
             setFilters({ ...filters, status: e.target.value });
             setPage(1);
           }}
+          style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
         >
           <option value="">Durum (Tümü)</option>
           <option value="alive">Alive</option>
@@ -117,6 +144,7 @@ function App() {
             setFilters({ ...filters, gender: e.target.value });
             setPage(1);
           }}
+          style={{ padding: '10px', borderRadius: '8px', border: '1px solid #ccc' }}
         >
           <option value="">Cinsiyet (Tümü)</option>
           <option value="male">Male</option>
@@ -126,56 +154,60 @@ function App() {
         </select>
       </div>
 
-      {/* Sıralama */}
-      <div style={{ marginBottom: '1rem' }}>
-        <label>Sıralama: </label>
-        <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
-          <option value="asc">A → Z</option>
-          <option value="desc">Z → A</option>
-        </select>
-      </div>
-
-      {/* Sayfa Boyutu */}
-      <div style={{ marginBottom: '1rem' }}>
-        <label>Sayfa Boyutu: </label>
-        <select
-          value={itemsPerPage}
-          onChange={(e) => {
-            setItemsPerPage(Number(e.target.value));
-            setPage(1);
-          }}
-        >
-          {[250, 300, 350, 400].map((size) => (
-            <option key={size} value={size}>{size}</option>
-          ))}
-        </select>
+      {/* Sıralama ve Sayfa Boyutu */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        gap: '2rem',
+        marginBottom: '1rem'
+      }}>
+        <div>
+          <label>Sıralama: </label>
+          <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+            <option value="asc">A → Z</option>
+            <option value="desc">Z → A</option>
+          </select>
+        </div>
+        <div>
+          <label>Sayfa Boyutu: </label>
+          <select
+            value={itemsPerPage}
+            onChange={(e) => {
+              setItemsPerPage(Number(e.target.value));
+              setPage(1);
+            }}
+          >
+            {[250, 300, 350, 400].map((size) => (
+              <option key={size} value={size}>{size}</option>
+            ))}
+          </select>
+        </div>
       </div>
 
       {/* Hata Mesajı */}
       {error ? (
         <div style={{
-          backgroundColor: '#ffcccc',
-          color: '#cc0000',
+          backgroundColor: '#ffebeb',
+          color: '#c0392b',
           padding: '1rem',
           borderRadius: '8px',
           marginBottom: '1rem',
-          fontWeight: 'bold',
-          border: '2px solid #cc0000',
-          boxShadow: '0 0 8px #cc0000',
+          border: '1px solid #e74c3c',
+          textAlign: 'center',
+          fontWeight: 'bold'
         }}>
-          <strong>Hata:</strong> {error} Lütfen filtreyi kontrol edin ya da sonra tekrar deneyin.
+          <strong>Hata:</strong> {error}
         </div>
       ) : (
         <>
-          {/* Karakter Tablosu */}
           <Table data={characters} onRowClick={setSelectedCharacter} />
 
           {/* Sayfalama */}
-          <div style={{ marginTop: '1rem' }}>
+          <div style={{ marginTop: '1rem', textAlign: 'center' }}>
             <button onClick={() => setPage((p) => Math.max(p - 1, 1))} disabled={page === 1}>
               Önceki
             </button>
-            <span style={{ margin: '0 1rem' }}>
+            <span style={{ margin: '0 1rem', fontWeight: 'bold' }}>
               Sayfa {page} / {totalPages}
             </span>
             <button onClick={() => setPage((p) => Math.min(p + 1, totalPages))} disabled={page === totalPages}>
@@ -183,12 +215,12 @@ function App() {
             </button>
           </div>
 
-          {/* Detay */}
           <Character character={selectedCharacter} onClose={() => setSelectedCharacter(null)} />
         </>
       )}
     </div>
-  );
+  </div>
+);
 }
 
 export default App;
