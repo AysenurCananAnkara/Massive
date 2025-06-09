@@ -1,0 +1,50 @@
+/* Table.css */
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #ccc; /* Tablonun dış çerçevesi */
+}
+
+.styled-table th {
+  background-color: #4CAF50;
+  color: black; /* Yazı rengini siyah yaptık */
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Başlık hücreleri için kenarlık */
+}
+
+.styled-table td {
+  padding: 12px;
+  font-size: 0.95rem;
+  vertical-align: middle;
+  color: black; /* Yazı rengini siyah yaptık */
+  border: 1px solid #ccc; /* Hücre kenarlıkları */
+}
+
+.styled-table img {
+  width: 50px;
+  border-radius: 8px;
+}
+
+.styled-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.styled-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.styled-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #e6f7ff;
+}

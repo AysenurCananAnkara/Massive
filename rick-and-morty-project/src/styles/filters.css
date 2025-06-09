@@ -1,0 +1,30 @@
+/* Filters.css */
+
+.filters-container {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filters-container label {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #333;
+}
+
+.filters-container select,
+.filters-container input {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.filters-container select:focus,
+.filters-container input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
